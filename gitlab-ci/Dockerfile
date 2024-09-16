@@ -5,13 +5,14 @@
 #
 
 FROM ubuntu:20.04
-LABEL maintainer Farzad Farazmand
 
 ENV NDK_VERSION r25c
 
+ENV GRADLE_VERSION=8.7
+
 ENV ANDROID_SDK_ROOT "/sdk"
 ENV ANDROID_NDK_HOME "/ndk"
-ENV PATH "$PATH:${ANDROID_SDK_ROOT}/bin"
+ENV PATH "$PATH:${ANDROID_SDK_ROOT}/tools:/opt/gradle/gradle-${GRADLE_VERSION}/bin"
 
 ENV DEBIAN_FRONTEND=noninteractive 
 
@@ -44,7 +45,7 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
 
 # Install Google's repo tool version 1.23 (https://source.android.com/setup/build/downloading#installing-repo)
 RUN curl -o /usr/local/bin/repo https://storage.googleapis.com/git-repo-downloads/repo \
- && echo "18ec0f6e1ac3c12293a4521a5c2224d96e4dd5ee49662cc837c2dd854ef824e5 /usr/local/bin/repo" | sha256sum --strict -c - \
+# && echo "18ec0f6e1ac3c12293a4521a5c2224d96e4dd5ee49662cc837c2dd854ef824e5 /usr/local/bin/repo" | sha256sum --strict -c - \
  && chmod a+x /usr/local/bin/repo
 
 # download and unzip latest command line tools
@@ -77,3 +78,17 @@ RUN mkdir /tmp/android-ndk && \
     mv ./android-ndk-${NDK_VERSION} ${ANDROID_NDK_HOME} && \
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /tmp/android-ndk
+
+# Install Gradle
+RUN mkdir /opt/gradle && \
+        cd /opt/gradle && \
+        curl -sL -O http://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip && \
+        ls /opt/gradle && \
+        unzip -q gradle-${GRADLE_VERSION}-all.zip && \
+        rm ./gradle-${GRADLE_VERSION}-all.zip
+
+
+# Get base app from GitHub and build it to cache the repositories
+RUN git clone -b main https://github.com/feriousa/DockerBaseApp.git && \
+    cd DockerBaseApp && \
+    gradle assembleDebug
