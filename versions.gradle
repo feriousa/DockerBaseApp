@@ -1,0 +1,294 @@
+/**
+ * Shared file between modules so that they can all use the same dependencies.
+ **/
+ext.deps = [:]
+ext.versions = [:]
+
+def versions = [:]
+versions.android_gradle_plugin = '8.5.1'
+versions.annotations = "1.2.0"
+//kotlin
+versions.kotlin = "1.9.20"
+versions.core_ktx = "1.13.1"
+versions.activity_ktx = "1.8.1"
+versions.fragment_ktx = "1.6.2"
+//Google & Firebase
+versions.playservice_gradle_plugin = "4.3.14"
+versions.playservice_auth = "17.0.0"
+versions.playservice_gcm = "16.1.0"
+versions.playservice_location = "17.0.0"
+versions.playservice_ads = "18.0.0"
+versions.playservice_phone = "17.4.0"
+versions.firebase = "28.0.1"
+//AdTrace
+versions.adtrace = "2.5.2"
+versions.install_referrer = "2.2"
+
+//UI
+versions.appcompat = "1.7.0"
+versions.material = "1.12.0"
+versions.vector = "1.2.0"
+versions.browser = "1.8.0"
+versions.cardview = "1.0.0"
+versions.recyclerview = "1.3.2"
+versions.viewpager = "1.1.0"
+versions.constraint_layout = "2.1.4"
+versions.otp_view = "2.1.2"
+versions.lottie = "6.4.0"
+versions.onboarding = "6.1.0"
+versions.shimmer = "0.5.0"
+versions.date_picker = "1.8.0"
+versions.timeline_view = "1.1.2"
+versions.swipe_to_refresh = "1.1.0"
+versions.image_picker = "2.3.18"
+versions.contact = "1.4.0"
+versions.magic_progress = "1.1.1"
+versions.smooth_progress = "0.1.1"
+versions.show_case = "1.3.9"
+versions.camerax = "1.3.4"
+versions.color_palette = "1.0.0"
+versions.touch_imageview = "3.5"
+versions.circular_seekbar = "1.0.2"
+versions.qr_generator = "1.6.2"
+
+//Animation
+versions.yoyo = "2.4"
+//Map
+versions.neshan_sdk= "1.0.0"
+versions.neshan_services= "1.0.0"
+versions.neshan_commons= "0.0.2"
+
+//DI
+versions.hilt = "2.51.1"
+versions.hilt_androidx = "1.2.0"
+//Architecture Component
+versions.lifecycle = "2.5.1"
+versions.combine_livedata = "2.0.0"
+//HTTP Requests
+versions.retrofit = "2.9.0"
+versions.logging_interceptor = "4.9.3"
+
+versions.resumable_upload_java = "0.5.0"
+versions.resumable_upload_android = "0.1.11"
+//Network connectivity
+versions.network_connection = "1.1.0"
+//Database
+versions.room = "2.6.1"
+versions.sqlChipper = "4.5.4"
+versions.sqlLite = "2.1.0"
+//Cache
+versions.cache = "0.0.18-SNAPSHOT"
+//Async
+versions.coroutines = "1.6.4"
+//Image Loading
+versions.glide = "4.14.2"
+
+// exoplayer
+versions.exoplayer = "2.19.1"
+
+// permissions
+versions.dexter = "6.2.3"
+
+// POD chat
+versions.chat = "1.1.0-rc03-light"
+versions.eventbus = "3.3.1"
+
+// Logger
+versions.logger = "2.2.0"
+//Metrix
+versions.metrix ="1.1.5"
+
+// SonarQube
+versions.sonar = "3.3"
+
+versions.multidex = "2.0.1"
+
+// root checker
+versions.root_checker = "0.1.0"
+
+// encryptedPreference
+versions.encrypted_preferences = "1.1.0-alpha05"
+
+// biometric
+versions.biometric = "1.2.0-alpha05"
+
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.compile_sdk = 34
+build_versions.target_sdk = 34
+ext.build_versions = build_versions
+
+
+def deps = [:]
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+
+//PlayService & Firebase
+deps.playservice_gradle_plugin = "com.google.gms:google-services:$versions.playservice_gradle_plugin"
+deps.playservice_auth = "com.google.android.gms:play-services-auth:$versions.playservice_auth"
+deps.playservice_gcm = "com.google.android.gms:play-services-gcm:$versions.playservice_gcm"
+deps.playservice_location = "com.google.android.gms:play-services-location:$versions.playservice_location"
+deps.playservice_ads = "com.google.android.gms:play-services-ads-identifier:$versions.playservice_ads"
+deps.playservice_phone = "com.google.android.gms:play-services-auth-api-phone:$versions.playservice_phone"
+deps.firebase = "com.google.firebase:firebase-bom:$versions.firebase"
+deps.firebase_analytics = "com.google.firebase:firebase-analytics"
+deps.firebase_messaging = "com.google.firebase:firebase-messaging"
+
+//AdTrace
+deps.adtrace = "io.adtrace:android-sdk:$versions.adtrace"
+deps.install_referrer = "com.android.installreferrer:installreferrer:$versions.install_referrer"
+
+deps.sonar = "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$versions.sonar"
+
+//Metrix
+deps.metrix = "ir.metrix:metrix:$versions.metrix"
+
+//root checker
+deps.root_checker = "com.scottyab:rootbeer-lib:$versions.root_checker"
+
+deps.encrypted_preferences = "androidx.security:security-crypto:$versions.encrypted_preferences"
+deps.biometric = "androidx.biometric:biometric:$versions.biometric"
+
+deps.annotations = "androidx.annotation:annotation:$versions.annotations"
+deps.app_compat = "androidx.appcompat:appcompat:$versions.appcompat"
+
+deps.cardview = "androidx.cardview:cardview:$versions.cardview"
+deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+deps.viewpager = "androidx.viewpager2:viewpager2:$versions.viewpager"
+deps.material = "com.google.android.material:material:$versions.material"
+deps.browser = "androidx.browser:browser:$versions.browser"
+deps.vector = "androidx.vectordrawable:vectordrawable:$versions.vector"
+deps.otp_view = "com.github.mukeshsolanki:android-otpview-pinview:$versions.otp_view"
+deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.onboarding = "com.github.AppIntro:AppIntro:$versions.onboarding"
+deps.shimmer = "com.facebook.shimmer:shimmer:$versions.shimmer"
+deps.date_picker = "com.github.aliab:Persian-Date-Picker-Dialog:$versions.date_picker"
+deps.timeline_view = "com.github.lriccardo:TimelineView:$versions.timeline_view"
+deps.swipe_to_refresh = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swipe_to_refresh"
+deps.image_picker = "com.github.Drjacky:ImagePicker:$versions.image_picker"
+deps.magic_progress = "com.liulishuo.magicprogresswidget:library:$versions.magic_progress"
+deps.smooth_progress = "cn.dreamtobe.percentsmoothhandler:library:$versions.smooth_progress"
+deps.show_case = "com.github.faruktoptas:FancyShowCaseView:$versions.show_case"
+
+// camera x
+def camerax = [:]
+camerax.core = "androidx.camera:camera-core:$versions.camerax"
+camerax.camera = "androidx.camera:camera-camera2:$versions.camerax"
+camerax.lifecycle = "androidx.camera:camera-lifecycle:$versions.camerax"
+camerax.view = "androidx.camera:camera-view:$versions.camerax"
+camerax.video = "androidx.camera:camera-video:$versions.camerax"
+camerax.extension = "androidx.camera:camera-extensions:$versions.camerax"
+deps.camerax = camerax
+
+deps.color_palette = "androidx.palette:palette:$versions.color_palette"
+
+deps.touch_imageview = "com.github.MikeOrtiz:TouchImageView:$versions.touch_imageview"
+
+deps.slider = "org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:$versions.slider"
+
+deps.circular_seekbar = "com.seosh817:circularseekbar:$versions.circular_seekbar"
+
+deps.qr_generator = "com.github.alexzhirkevich:custom-qr-generator:$versions.qr_generator"
+
+// contact
+deps.contact = "com.alexstyl:contactstore:$versions.contact"
+deps.contact_coroutine = "com.alexstyl:contactstore-coroutines:$versions.contact"
+
+deps.yoyo = "com.daimajia.androidanimations:library:${versions.yoyo}@aar"
+deps.yoyo_easing = "com.daimajia.easing:library:${versions.yoyo}@aar"
+
+//Neshan
+deps.neshan_sdk = "neshan-android-sdk:mobile-sdk:${versions.neshan_sdk}"
+deps.neshan_services = "neshan-android-sdk:services-sdk:${versions.neshan_services}"
+deps.neshan_commons = "neshan-android-sdk:common-sdk:${versions.neshan_commons}"
+
+deps.kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+deps.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.activity_ktx = "androidx.activity:activity-ktx:$versions.activity_ktx"
+deps.fragment_ktx = "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
+
+def hilt = [:]
+hilt.runtime = "com.google.dagger:hilt-android:$versions.hilt"
+hilt.core = "com.google.dagger:hilt-core:$versions.hilt"
+hilt.compiler = "com.google.dagger:hilt-android-compiler:$versions.hilt"
+hilt.androidx_compiler = "androidx.hilt:hilt-compiler:$versions.hilt_androidx"
+deps.hilt = hilt
+
+deps.hilt_plugin = "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+
+def lifecycle = [:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+lifecycle.livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+lifecycle.combine_livedata = "com.github.Zhuinden:livedata-combinetuple-kt:$versions.combine_livedata"
+deps.lifecycle = lifecycle
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.moshi_converter = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+deps.retrofit = retrofit
+
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor"
+
+def resumable_upload = [:]
+resumable_upload.android = "io.tus.android.client:tus-android-client:$versions.resumable_upload_android"
+resumable_upload.java = "io.tus.java.client:tus-java-client:$versions.resumable_upload_java"
+deps.resumable_upload = resumable_upload
+
+deps.network_connection = "com.github.kidzyland:connectivity:$versions.network_connection"
+
+//THE FUCKING CHAT!
+deps.chat = "io.github.fanapsoft:podchat:$versions.chat"
+deps.eventbus = "org.greenrobot:eventbus:$versions.eventbus"
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.ktx = "androidx.room:room-ktx:$versions.room"
+room.testing = "androidx.room:room-testing:$versions.room"
+deps.room = room
+
+deps.sqlChipper = "net.zetetic:android-database-sqlcipher:$versions.sqlChipper"
+deps.sqlLite = "androidx.sqlite:sqlite:$versions.sqlLite"
+
+//cache
+deps.cache = "com.iainconnor:objectcache:$versions.cache"
+
+def coroutines = [:]
+coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
+coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+deps.coroutines = coroutines
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def exoplayer = [:]
+exoplayer.core = "com.google.android.exoplayer:exoplayer-core:$versions.exoplayer"
+exoplayer.ui = "com.google.android.exoplayer:exoplayer-ui:$versions.exoplayer"
+deps.exoplayer = exoplayer
+
+deps.dexter = "com.karumi:dexter:$versions.dexter"
+
+deps.logger = "com.orhanobut:logger:$versions.logger"
+
+ext.deps = deps
+ext.versions = versions
+
+
+//Repositories
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.mavenCentral()
+    handler.maven { url "https://jitpack.io" }
+    // cache manager
+    handler.maven { url 'https://raw.github.com/iainconnor/ObjectCache/master/maven/' }
+    handler.maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+ext.addRepos = this.&addRepos
