@@ -1,6 +1,6 @@
 #
 # For JDK 11 (Gradle 7+) use: before_script: - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-# For JDK 11 (Gradle 8+) use: before_script: - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+# For JDK 17 (Gradle 8+) use: before_script: - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 # For JDK 8: before_script: - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 #
 
@@ -21,22 +21,13 @@ RUN apt-get -qq update && apt-get install -y locales \
 ENV LANG en_US.UTF-8
 
 # install necessary packages
-# prevent installation of openjdk-11-jre-headless with a trailing minus,
-# as openjdk-8-jdk can provide all requirements and will be used anyway
 RUN apt-get update && apt-get install -qqy --no-install-recommends \
     apt-utils \
-    openjdk-8-jdk \
-    openjdk-11-jdk \
     openjdk-17-jdk \
     checkstyle \
     unzip \
     curl \
-    cmake \
-    lldb \
     git \
-    python-is-python3 \
-    ninja-build \
-    build-essential \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # pre-configure some ssl certs
@@ -47,6 +38,8 @@ RUN rm -f /etc/ssl/certs/java/cacerts; \
 RUN curl -o /usr/local/bin/repo https://storage.googleapis.com/git-repo-downloads/repo \
 # && echo "18ec0f6e1ac3c12293a4521a5c2224d96e4dd5ee49662cc837c2dd854ef824e5 /usr/local/bin/repo" | sha256sum --strict -c - \
  && chmod a+x /usr/local/bin/repo
+
+RUN echo "Clone sample project and build it to cache the gradle and libraries ..."
 
 # download and unzip latest command line tools
 RUN export CMD_LINE_TOOLS_VERSION="$(curl -s https://developer.android.com/studio/index.html | grep -oP 'commandlinetools-linux-\K\d+' | uniq)" && \
@@ -87,7 +80,6 @@ RUN mkdir /opt/gradle && \
         unzip -q gradle-${GRADLE_VERSION}-all.zip && \
         rm ./gradle-${GRADLE_VERSION}-all.zip
 
-echo "Clone sample project and build it to cache the gradle and libraries ..."
 # Get base app from GitHub and build it to cache the repositories
 RUN git clone -b main https://github.com/feriousa/DockerBaseApp.git && \
     cd DockerBaseApp && \
