@@ -82,4 +82,4 @@ RUN mkdir /opt/gradle && \
 # Get base app from GitHub and build it to cache the repositories
 RUN git clone -b main https://github.com/feriousa/DockerBaseApp.git && \
     cd DockerBaseApp && \
-    ./gradlew --info assembleDebug
+    ./gradlew --info  assembleDebug

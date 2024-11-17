@@ -53,9 +53,21 @@ dependencies {
     //kotlin
     implementation deps.kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0"
     implementation deps.core_ktx
     implementation deps.activity_ktx
     implementation deps.fragment_ktx
+
+    implementation "androidx.activity:activity:1.5.1"
+    implementation "androidx.activity:activity:1.7.0"
+    implementation "androidx.activity:activity:1.8.0"
+    implementation "androidx.activity:activity:1.8.1"
+    implementation "androidx.annotation:annotation:1.0.0"
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.annotation:annotation:1.3.0"
+    implementation "androidx.annotation:annotation-experimental:1.3.1"
+    implementation "androidx.annotation:annotation-experimental:1.4.0"
+    implementation "androidx.annotation:annotation-jvm:1.6.0"
 
     //Firebase
     implementation platform(deps.firebase)
