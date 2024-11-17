@@ -78,9 +78,8 @@ RUN mkdir /opt/gradle && \
         unzip -q gradle-${GRADLE_VERSION}-all.zip && \
         rm ./gradle-${GRADLE_VERSION}-all.zip
 
-RUN echo "Clone sample project and build it to cache the gradle and libraries ..."
 
 # Get base app from GitHub and build it to cache the repositories
 RUN git clone -b main https://github.com/feriousa/DockerBaseApp.git && \
     cd DockerBaseApp && \
-    gradle --build-cache assembleDebug
+    ./gradlew --info assembleDebug
