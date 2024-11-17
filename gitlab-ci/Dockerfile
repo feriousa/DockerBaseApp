@@ -39,8 +39,6 @@ RUN curl -o /usr/local/bin/repo https://storage.googleapis.com/git-repo-download
 # && echo "18ec0f6e1ac3c12293a4521a5c2224d96e4dd5ee49662cc837c2dd854ef824e5 /usr/local/bin/repo" | sha256sum --strict -c - \
  && chmod a+x /usr/local/bin/repo
 
-RUN echo "Clone sample project and build it to cache the gradle and libraries ..."
-
 # download and unzip latest command line tools
 RUN export CMD_LINE_TOOLS_VERSION="$(curl -s https://developer.android.com/studio/index.html | grep -oP 'commandlinetools-linux-\K\d+' | uniq)" && \
   curl -s https://dl.google.com/android/repository/commandlinetools-linux-${CMD_LINE_TOOLS_VERSION}_latest.zip -o /tools.zip && \
@@ -80,7 +78,9 @@ RUN mkdir /opt/gradle && \
         unzip -q gradle-${GRADLE_VERSION}-all.zip && \
         rm ./gradle-${GRADLE_VERSION}-all.zip
 
+RUN echo "Clone sample project and build it to cache the gradle and libraries ..."
+
 # Get base app from GitHub and build it to cache the repositories
 RUN git clone -b main https://github.com/feriousa/DockerBaseApp.git && \
     cd DockerBaseApp && \
-    gradle assembleDebug
+    gradle --build-cache assembleDebug
